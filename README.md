@@ -1,5 +1,6 @@
 # Home Assistant Buienradar Forecast Card
-Graph of Buienradars rain forecast 
+Graph of Buienradars rain forecast.
+This is a maintained fork of [lukevink/lovelace-buien-rain-card](https://github.com/lukevink/lovelace-buien-rain-card).
 
 ![Preview Image](https://github.com/lukevink/home-assistant-buienradar-forecast-card/blob/master/buien-card-screenshot1.png)
 
