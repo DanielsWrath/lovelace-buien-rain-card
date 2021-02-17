@@ -5,19 +5,19 @@
  * Description:
  *   Custom HA card to retrieve rainfall forcast from BuienRadar.nl, and display values in graph.
  *
- * 
+ *
  * v0.0.4 	August 2020 		updates by @spudje
  *   - Included chartjs-plugin-annotation.js version: 0.5.7 at the bottom
- * 
+ *
  * v0.0.5	03 January 2021  	updates by @bouwew
  *   - Correct/update limits for licht, matig, zwaar.
  *   - Improve/fix initial updating.
- * 
+ *
  * v0.0.6	4 January 2021  	updates by @jofie
  *   - Annotation lines are now configurable through card config parameters.
  *   - Changed annotation lines to thin, dash, color.
  *   - Moved annotation labels to above line, grey color, transparent background.
- * 
+ *
 */
 
 class RainCard extends HTMLElement {
@@ -28,7 +28,7 @@ class RainCard extends HTMLElement {
 			mode: 'open'
 		});
 	}
-	
+
 	setConfig(config) {
 
 		const root = this.shadowRoot;
@@ -104,7 +104,7 @@ class RainCard extends HTMLElement {
 		if (typeof this.scaleMax === 'undefined') {
 			this.scaleMax = 2.0;
 		}
-		
+
 		// @spudje: Config extended with annotations to make the graph look more like buienalarm
 		// @spudje: using suggestedMax: this.scaleMax to define max y-axis value to make it scale better
 		this.initconfig = {
@@ -265,11 +265,8 @@ class RainCard extends HTMLElement {
 
 	initGraph(element) {
 		var _this = this;
-
-		// 			console.log(rainfall);
-		// 			console.log(time);
-		
 		var originalLineDraw = Chart.controllers.line.prototype.draw;
+
 		Chart.helpers.extend(Chart.controllers.line.prototype, {
 			draw: function() {
 				originalLineDraw.apply(this, arguments);
@@ -319,7 +316,6 @@ class RainCard extends HTMLElement {
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "https://gpsgadget.buienradar.nl/data/raintext?lat=" + this.lat + "&lon=" + this.long);
-//		xhr.open("GET", "https://gpsgadget.buienradar.nl/data/raintext?lat=51.5888&lon=4.77602");
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 				_this.decodeString(xhr.response, "|", "\n");
@@ -357,7 +353,7 @@ class RainCard extends HTMLElement {
 		else {
 			this.scaleMax = 2.5;
 		}
-		
+
 		this.chart.data = {
 			labels: this.time,
 			datasets: [{
@@ -370,7 +366,7 @@ class RainCard extends HTMLElement {
 			}]
 		}
 		this.chart.update();
-/*		
+/*
  		if(this.chart.data.labels != this.time){
 			this.chart.data.labels = this.time;
 			this.chart.data.datasets[0].data = this.rainfall;

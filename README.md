@@ -1,5 +1,6 @@
 # Home Assistant Buienradar Forecast Card
-Graph of Buienradars rain forecast 
+Graph of Buienradars rain forecast.
+This is a maintained fork of [lukevink/lovelace-buien-rain-card](https://github.com/lukevink/lovelace-buien-rain-card).
 
 ![Preview Image](https://github.com/lukevink/home-assistant-buienradar-forecast-card/blob/master/buien-card-screenshot1.png)
 
@@ -24,8 +25,10 @@ Graph of Buienradars rain forecast
         fillColor: 'rgba(89, 160, 238, 0.2)'
         update_interval: 10
         icon: 'mdi:weather-rainy'
+        height: 300  
         
  (update interval is in seconds)
+ (height is optional)
 
 ### An example in my own UI as a Picture Element:
 
